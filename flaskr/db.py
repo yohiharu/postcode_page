@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sqlite3
 
 def create_table(name):
