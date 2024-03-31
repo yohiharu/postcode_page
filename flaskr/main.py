@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, redirect
 import sqlite3
 
 import api
@@ -27,7 +27,7 @@ def form():
         )
     else:
         con = sqlite3.connect(DATABASE)
-        con.execute("INSERT INTO codes VALUES(?)", [int(code)])
+        con.execute("INSERT INTO codes(code) VALUES(?)", [int(code)])
         con.commit()
         con.close()
         return render_template(
@@ -38,12 +38,20 @@ def form():
 @app.route("/history")
 def history():
     con = sqlite3.connect(DATABASE)
-    codes = con.execute("SELECT code from codes").fetchall()
-    codes = [i[0] for i in codes]
+    codes = con.execute("SELECT id, code from codes").fetchall()
     codes.reverse()
     return render_template("history.html",
         codes=codes
     )
+
+@app.route("/del/<int:id>")
+def dele(id):
+    con = sqlite3.connect(DATABASE)
+    con.execute("DELETE FROM codes where id = {}".format(id))
+    con.commit()
+    con.close()
+    return redirect("/history")
+
 if __name__ == "__main__":
     db.create_table(DATABASE)
     app.run(host="0.0.0.0", port=443)

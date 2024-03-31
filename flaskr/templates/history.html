@@ -3,7 +3,7 @@
 <p>history</p>
 <ul class="list-group list-group-flush">
 {% for code in codes %}
-	<li class="list-group-item">{{ code }}</li>
+<a href="/del/{{ code[0] }}"><li class="list-group-item">{{ code[1] }}</li></a>
 {% endfor %}
 </ul>
 <a href="{{ url_for("index") }}">go back</a>
