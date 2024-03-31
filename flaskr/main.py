@@ -35,6 +35,14 @@ def form():
             address = address
         )
 
+@app.route("/history")
+def history():
+    con = sqlite3.connect(DATABASE)
+    codes = con.execute("SELECT code from codes").fetchall()
+    codes = [i[0] for i in codes]
+    return render_template("history.html",
+        codes=codes
+    )
 if __name__ == "__main__":
     db.create_table(DATABASE)
     app.run(host="0.0.0.0", port=443)
