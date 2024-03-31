@@ -40,6 +40,7 @@ def history():
     con = sqlite3.connect(DATABASE)
     codes = con.execute("SELECT code from codes").fetchall()
     codes = [i[0] for i in codes]
+    codes.reverse()
     return render_template("history.html",
         codes=codes
     )
