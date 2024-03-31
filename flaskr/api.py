@@ -8,5 +8,7 @@ def get_address(zipcode):
     j = json.loads(r.text)
     if j["status"] != 200:
         return "error"
+    elif j["results"] == None:
+        return "error"
     else:
         return j["results"][0]["address1"] + j["results"][0]["address2"] + j["results"][0]["address3"]
