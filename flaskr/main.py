@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import render_template, request
 import api
+import db
 
 app = Flask(__name__)
 
@@ -27,4 +28,5 @@ def form():
         )
 
 if __name__ == "__main__":
+    db.create_table()
     app.run(host="0.0.0.0", port=443)
