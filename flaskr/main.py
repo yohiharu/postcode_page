@@ -45,7 +45,7 @@ def history():
     )
 
 @app.route("/del/<int:id>")
-def dele(id):
+def destroy(id):
     con = sqlite3.connect(DATABASE)
     con.execute("DELETE FROM codes where id = {}".format(id))
     con.commit()
