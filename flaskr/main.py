@@ -27,7 +27,7 @@ def form():
         )
     else:
         con = sqlite3.connect(DATABASE)
-        con.execute("INSERT INTO codes VALUES(?)", [code])
+        con.execute("INSERT INTO codes VALUES(?)", [int(code)])
         con.commit()
         con.close()
         return render_template(
