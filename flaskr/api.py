@@ -10,6 +10,3 @@ def get_address(zipcode):
         return "error"
     else:
         return j["results"][0]["address1"] + j["results"][0]["address2"] + j["results"][0]["address3"]
-
-if __name__ == "__main__":
-    print(get_address(input()))
