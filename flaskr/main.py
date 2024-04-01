@@ -38,7 +38,7 @@ def form():
 @app.route("/history")
 def history():
     con = sqlite3.connect(DATABASE)
-    codes = con.execute("SELECT id, code from codes").fetchall()
+    codes = con.execute("SELECT id, code FROM codes").fetchall()
     codes.reverse()
     return render_template("history.html",
         codes=codes
@@ -47,7 +47,7 @@ def history():
 @app.route("/del/<int:id>")
 def destroy(id):
     con = sqlite3.connect(DATABASE)
-    con.execute("DELETE FROM codes where id = {}".format(id))
+    con.execute("DELETE FROM codes WHERE id = {}".format(id))
     con.commit()
     con.close()
     return redirect("/history")
