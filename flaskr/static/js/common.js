@@ -7,4 +7,10 @@ $(function(){
 			$('.top-btn').fadeOut();
 		}
 	});
+	$('.top-btn').click(function(){
+		$('body,html').animate({
+			scrollTop: 0
+		}, 750);
+	});
 });
+
