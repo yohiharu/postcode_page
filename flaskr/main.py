@@ -54,4 +54,4 @@ def destroy(id):
 
 if __name__ == "__main__":
     db.create_table(DATABASE)
-    app.run(host="0.0.0.0", port=443)
+    app.run(host="0.0.0.0", port=80)
