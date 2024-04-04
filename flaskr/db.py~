@@ -8,4 +8,6 @@ def create_table(name):
     con.execute("CREATE TABLE IF NOT EXISTS codes (id integer primary key autoincrement, code int)")
     con.close()
 
-__name
+if __name__ = "__main__":
+    name = "database.db"
+    create_table(name)
