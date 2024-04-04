@@ -51,7 +51,3 @@ def destroy(id):
     con.commit()
     con.close()
     return redirect("/history")
-
-if __name__ == "__main__":
-    db.create_table(DATABASE)
-    app.run(host="0.0.0.0", port=80)
